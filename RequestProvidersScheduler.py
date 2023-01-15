@@ -17,9 +17,10 @@ class RequestProvidersScheduler:
         for p in self._providers:
             print(f"Scheduling {p.__class__.__name__}...", end="")
             if self._debug:
-                schedule.every(p.time).seconds.do(p.run)
+                schedule.every(p.requestNb).seconds.do(p.run)
             else:
-                schedule.every(p.time).minutes.do(p.run)
+                interval = 1440 / p.requestNb
+                schedule.every(interval).minutes.do(p.run)
             print("Done")
         while True:
             schedule.run_pending()
