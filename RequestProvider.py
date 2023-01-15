@@ -2,8 +2,8 @@ import requests
 
 
 class RequestProvider:
-    def __init__(self, host: str, token: str, time: int) -> None:
-        self.time = time
+    def __init__(self, host: str, token: str, request_nb: int) -> None:
+        self.requestNb = request_nb
         self._host = host
         self._token = token
 
