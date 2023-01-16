@@ -1,0 +1,14 @@
+[
+  {
+    "host": "HOST1",
+    "path": "/v2/top-headlines?country=us&apiKey=",
+    "token": "TOKEN1",
+    "requestNb": 10
+  },
+  {
+    "host": "HOST2",
+    "path": "/v1/news/all?api_token=",
+    "token": "TOKEN2",
+    "requestNb": 999
+  }
+]

@@ -5,13 +5,14 @@ from RequestProvidersScheduler import RequestProvidersScheduler
 from threading import Thread
 import os
 from dotenv import load_dotenv
+import json
 
 load_dotenv()
-
-news_api = [
-    RequestProvider(os.getenv("HOST"), os.getenv("TOKEN"), int(os.getenv("ALLOWED_REQUEST_PER_DAY"))),
-]
-
+news_api = []
+with open("providers.json", "r") as file:
+    data = json.load(file)
+for element in data:
+    news_api.append(RequestProvider(os.getenv(element["host"]), element["path"], os.getenv(element["token"]), int(element["requestNb"])))
 if __name__ == "__main__":
     scheduler = RequestProvidersScheduler(news_api, True)
     scheduler_thread = Thread(target=scheduler.run)
