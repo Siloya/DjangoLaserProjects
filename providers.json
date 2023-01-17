@@ -1,14 +1,59 @@
 [
   {
+    "active": false,
     "host": "HOST1",
     "path": "/v2/top-headlines?country=us&apiKey=",
     "token": "TOKEN1",
-    "requestNb": 10
+    "requestNb": 10,
+    "mapping": {
+      "dataPath": "articles",
+      "title": "$..title",
+      "subTitle": "$..description",
+      "content": "$..content",
+      "imageUrl": "$..urlToImage",
+      "provider": "$..name",
+      "publishedAt": "$..publishedAt",
+      "source": "$..url",
+      "category": "$..category"
+    },
+    "error": "no category"
   },
   {
+    "active": false,
     "host": "HOST2",
     "path": "/v1/news/all?api_token=",
     "token": "TOKEN2",
-    "requestNb": 999
+    "requestNb": 150,
+    "mapping": {
+      "dataPath": "data",
+      "title": "$..title",
+      "subTitle": "$..snippet",
+      "content": "$..description",
+      "imageUrl": "$..image_url",
+      "provider": "$..source",
+      "publishedAt": "$..published_at",
+      "source": "$..url",
+      "category": "$..categories"
+    },
+    "error": "no error"
+  },
+  {
+    "active": false,
+    "host": "HOST3",
+    "path": "/v1/news?access_key=",
+    "token": "TOKEN3",
+    "requestNb": 16,
+    "mapping": {
+      "dataPath": "data",
+      "title": "$..title",
+      "subTitle": "$..snippet",
+      "content": "$..description",
+      "imageUrl": "$..image",
+      "provider": "$..source",
+      "publishedAt": "$..published_at",
+      "source": "$..url",
+      "category": "$..category"
+    },
+    "error": "author is null; subtitle not found"
   }
 ]
