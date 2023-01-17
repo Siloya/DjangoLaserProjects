@@ -62,6 +62,7 @@ class RequestProvider:
         published_at_expr = parse(self.mapping['publishedAt'])
         src_expr = parse(self.mapping['source'])
         category_expr = parse(self.mapping['category'])
+        author_expr = parse(self.mapping['author'])
         for new in response[self.mapping['dataPath']]:
             title = title_expr.find(new)[0].value
             sub_title = sub_title_expr.find(new)[0].value
@@ -71,10 +72,11 @@ class RequestProvider:
             published_at = published_at_expr.find(new)[0].value
             src = src_expr.find(new)[0].value
             category = category_expr.find(new)[0].value
+            author = author_expr.find(new)[0].value
             news.append(
                 # News(new['title'], new['sub_title'], new['content'], new['urlToImage'], new['source']['provider'], new['publishedAt'], new['src'],
                 # None)
-                News(title, sub_title, content, url_to_image, provider, published_at, src, category)
+                News(title, sub_title, content, url_to_image, provider, published_at, src, category, author)
             )
 
         # for book in news:
@@ -82,7 +84,7 @@ class RequestProvider:
 
 
 class News:
-    def __init__(self, title, sub_title, content, url_image, provider, date_published, src, category):
+    def __init__(self, title, sub_title, content, url_image, provider, date_published, src, category, author):
         self.title = title
         self.sub_title = sub_title
         self.content = content
@@ -91,3 +93,4 @@ class News:
         self.date_published = date_published
         self.src = src
         self.category = category
+        self.author = author
